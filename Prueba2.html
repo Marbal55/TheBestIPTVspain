@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Experiencia IPTV Definitiva en España</title>
+    <link rel="preload" as="image" href="imagenes/logo.webp" type="image/webp">
+    <link rel="preload" as="image" href="imagenes/Salon.webp" type="image/webp">
+    <link rel="preload" as="image" href="imagenes/Telegram_Logo.png" type="image/webp">
+    <style>
+        /* ESTILOS GLOBALES Y VARIABLES */
+        :root {
+            --primary: #ff6600;
+            --primary-hover: #e65c00;
+
+            /* Escala de Azules */
+            --bg-navbar: #0e1321;
+            --bg-body: #141b2e;
+            --bg-card: #1c2640;
+            --bg-subcard: #253150;
+
+            --text-white: #ffffff;
+            --text-gray: #b0c4de;
+            --border-color: #2b3a5a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding-top: 80px;
+            /* Ajustado al alto exacto del navbar */
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* 1. Barra de navegación principal */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: var(--bg-navbar);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        /* 2. Contenedor del logo */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-logo img {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-left: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            text-shadow: 0 0 5px rgba(255, 102, 0, 0.3);
+        }
+
+        .nav-logo a:hover .logo-text {
+            color: #ffffff;
+            transition: var(--transition);
+        }
+
+        /* 3. Menú de enlaces */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        /* 4. Menú Hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* ELEMENTOS GLOBALES DE TEXTO */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* LAYOUT PRINCIPAL */
+        section {
+            padding: 80px 5%;
+            /* Mantiene los márgenes de 5% laterales */
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            width: 100%;
+            padding: 0;
+        }
+
+        .card,
+        .content-block,
+        .pricing-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        /* SECCIÓN INICIO / HERO */
+        .hero-section {
+            width: 100%;
+            min-height: calc(100vh - 80px);
+            /* Ocupa el alto de la pantalla descontando el header */
+            background: linear-gradient(rgba(14, 19, 33, 0.7), rgba(14, 19, 33, 0.7)), url('./imagenes/Salon.webp');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 5%;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .hero-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border: none;
+            padding: 0;
+            background: none;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .hero-content p {
+            color: #e0e0e0;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 15px;
+        }
+
+        /* TITULARES DE SECCIÓN */
+        h2 {
+            font-size: 2.2rem;
+            color: var(--text-white);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-left: 16px;
+            border-left: 4px solid var(--primary);
+            background: linear-gradient(90deg, rgba(255, 102, 0, 0.08) 0%, transparent 100%);
+            border-radius: 2px 0 0 2px;
+        }
+
+        /* TARJETAS (CARDS) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            border-radius: 12px;
+            padding: 35px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(255, 102, 0, 0.15);
+        }
+
+        .card h3,
+        .card h4 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* CARDS: "POR QUÉ ELEGIRNOS" */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            align-items: stretch;
+            gap: 20px;
+        }
+
+        .feature-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .feature-icon {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Ajustes ópticos de los iconos (Opcional según las imágenes) */
+        .features-grid article:nth-child(1) .feature-icon {
+            transform: scale(0.7);
+        }
+
+        .features-grid article:nth-child(2) .feature-icon {
+            transform: scale(0.95);
+        }
+
+        .features-grid article:nth-child(3) .feature-icon {
+            transform: scale(1.05);
+        }
+
+
+        /* DISEÑO DE CARRUSELES */
+        .carousel {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            margin-top: 30px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: var(--bg-card);
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 25px;
+        }
+
+        .carousel-slide {
+            flex: 0 0 350px;
+            /* Un poco más pequeño para móviles */
+            scroll-snap-align: start;
+        }
+
+        /* BLOQUES DE CONTENIDOS Y SUBCARDS */
+        .content-block {
+            background: linear-gradient(145deg, #141b2e, #1a233a);
+            border: 1px solid rgba(76, 201, 240, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .content-block>h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .sub-card {
+            background-color: var(--bg-subcard);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            padding: 25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .sub-card:hover {
+            background-color: #222222;
+        }
+
+        .sub-card h4 {
+            color: var(--text-white);
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .sub-card h4:first-of-type {
+            margin-top: 0;
+        }
+
+        /* SECCIÓN TARIFAS / PRICING */
+        .pricing-tabs-info {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            /* Permite que las etiquetas caigan en varias líneas si la pantalla es pequeña */
+        }
+
+        .tab-info {
+            background-color: rgba(255, 102, 0, 0.1);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pricing-grid {
+            display: grid;
+            /* Pantallas grandes: Forzamos los 4 paquetes en línea horizontal */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            /* Aseguramos que la cuadrícula se mantenga centrada */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            border-radius: 16px;
+            padding: 40px 25px;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.04);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(255, 102, 0, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-white);
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-card .duration {
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .pricing-card .price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 0 0 30px 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-buy {
+            background-color: var(--primary);
+            color: var(--text-white);
+            border: none;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            margin-top: auto;
+            width: 100%;
+            /* Añadido para que el enlace se vea igual que un botón */
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+        }
+
+        /* BLOQUES PASO A PASO */
+        .step-block {
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .step-block h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* ==========================================
+           PREGUNTAS FRECUENTES (FAQ) - ACORDEÓN NATIVO
+           ========================================== */
+
+
+        .faq-item {
+            background: #1a2238;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item[open] {
+            border-color: var(--primary);
+        }
+
+        summary {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-align: left;
+            /* Evita que el botón + choque con el texto en móviles pequeños */
+            padding-right: 15px;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
+            transition: transform 0.2s ease;
+            line-height: 1;
+            flex-shrink: 0;
+            /* Evita que el símbolo se aplaste */
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            text-align: left;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-content p {
+            margin: 0;
+        }
+
+        /* BOTONES FIJOS CONTACTO */
+        #contact-box a {
+            background-color: var(--primary) !important;
+            color: #ffffff !important;
+            border: 1px solid var(--primary);
+        }
+
+        #contact-box a:hover {
+            background-color: var(--primary-hover) !important;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+        }
+
+        /* FLOTANTE TELEGRAM */
+        .telegram-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            z-index: 1000;
+            cursor: pointer;
+            animation: pulsacion 2s infinite;
+            border-radius: 50%;
+        }
+
+        .telegram-float img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7);
+        }
+
+        @keyframes pulsacion {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7);
+                transform: scale(1);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 136, 204, 0);
+                transform: scale(1.05);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 136, 204, 0);
+                transform: scale(1);
+            }
+        }
+
+        .telegram-float:hover {
+            animation: none;
+            transform: scale(1.15);
+        }
+
+        /* SECCIÓN DE CONTACTO */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: white;
+            margin-bottom: 15px;
+            width: 100%;
+            /* Asegura que no sobresalgan */
+        }
+
+        .contact-telegram-box {
+            background: linear-gradient(180deg, #1c2640 0%, #141b2e 100%);
+            border: 1px solid rgba(255, 102, 0, 0.2);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-telegram-box:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .rect-telegram-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            padding: 18px 30px;
+            background: linear-gradient(90deg, #0088cc, #00aaff);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .rect-telegram-btn:hover {
+            background: #0077b5;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* TOAST DE ÉXITO */
+        #toast {
+            visibility: hidden;
+            opacity: 0;
+            min-width: 250px;
+            height: 80px;
+            background-color: #28a745;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* Centrado Perfecto en X e Y */
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out, visibility 0s linear 0s;
+        }
+
+
+        /* ==========================================
+   SECCIÓN PASO A PASO (DISEÑO LIMPIO EN ZIG-ZAG)
+   ========================================== */
+        .steps-section {
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        .step-block {
+            display: flex;
+            align-items: center;
+            /* Centra verticalmente el texto con la imagen */
+            gap: 80px;
+            /* Más espacio entre ellos ya que no hay recuadros */
+            margin-bottom: 100px;
+            /* Separación limpia entre un paso y otro */
+            background: none;
+            /* Fuera cajas */
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        /* Evita que el último paso deje un espacio en blanco gigante abajo */
+        .step-block:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Invierte el orden en los pasos pares (Paso 2) */
+        .step-block:nth-of-type(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-text {
+            flex: 1.2;
+        }
+
+        .step-block h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Contenedor de la Imagen (Invisible, solo delimita el espacio) */
+        .step-image {
+            flex: 1;
+            max-width: 480px;
+            /* Ancho máximo para mantener la proporción */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* La imagen real: Ajuste perfecto sin perder trozos */
+        .step-image img {
+            width: 100%;
+            height: auto;
+            max-height: 320px;
+            /* Limita el alto para que todas tengan un tamaño similar */
+            object-fit: contain;
+            /* ¡Solucionado! Muestra la imagen COMPLETA sin importar su forma */
+            display: block;
+            /* En lugar de una sombra al recuadro, le damos una sombra suave a la propia silueta de la imagen */
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        /* Efecto elegante: en lugar de hacer zoom dentro de una caja, la imagen "flota" un pelín hacia arriba */
+        .step-block:hover .step-image img {
+            transform: translateY(-6px);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.25));
+        }
+
+        /*--- CATALOGO ------*/
+        .content-universe-section {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Esto centra todo el contenido horizontalmente */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .content-universe-section h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .content-universe-section .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            line-height: 1.6;
+        }
+
+        /* Acordeón */
+        .accordion-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .accordion-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-item:hover {
+            border-color: #3b445c;
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: var(--bg-card-hover);
+        }
+
+        .accordion-header::after {
+            content: "+";
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .header-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .accordion-arrow {
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid var(--text-secondary);
+            border-bottom: 2px solid var(--text-secondary);
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            display: none;
+        }
+
+        .accordion-item.is-open .accordion-arrow {
+            transform: rotate(-135deg);
+            border-color: var(--accent-orange);
+        }
+
+        .content-universe-section h2,
+        .content-universe-section .section-subtitle,
+        .accordion-container {
+            width: 100%;
+            max-width: 1100px;
+            /* Ancho máximo unificado */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .accordion-item.is-open .accordion-header::after {
+            content: "−";
+            /* Signo menos */
+            color: var(--accent-orange);
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+
+        .accordion-item.is-open .accordion-content {
+            max-height: 1500px;
+        }
+
+        .accordion-inner {
+            padding: 0 30px 40px 30px;
+        }
+
+        /* Grid y Zig-Zag */
+        .accordion-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-top: 20px;
+        }
+
+        /* Zig-Zag: Tarjetas pares invierten orden */
+        .accordion-item:nth-child(even) .accordion-grid {
+            direction: rtl;
+        }
+
+        .accordion-item:nth-child(even) .accordion-grid * {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .accordion-text .main-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Columnas internas */
+        .content-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .content-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .content-col h4 {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-col ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .content-col ul li::before {
+            content: "•";
+            color: var(--accent-orange);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Imágenes */
+        .accordion-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Imágenes 1 y 2 (Verticales con recuadro) */
+        .accordion-item:nth-child(1) .accordion-image img,
+        .accordion-item:nth-child(2) .accordion-image img {
+            width: 100%;
+            max-width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid #2a3143;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Imagen 3 (Logo, grande y sin marco) */
+        .accordion-item:nth-child(3) .accordion-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            object-fit: contain;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            padding: 20px;
+        }
+
+        /* ==========================================================================
+   DISEÑO RESPONSIVE TOTAL, UNIFICADO Y CORREGIDO (100% COMPLETO)
+   ========================================================================== */
+
+        /* --- 1. Portátiles y Pantallas Medianas (Tus Tarifas a 2x2) --- */
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* --- 2. Tablets (Ajustes de espacio intermedio) --- */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.4rem;
+            }
+
+            .contact-container {
+                gap: 30px;
+            }
+        }
+
+        /* --- 3. Móviles y Pantallas Pequeñas (Unificado hasta 860px) --- */
+        @media (max-width: 860px) {
+
+            /* FORZAR CERO MÁRGENES SUPERIORES GLOBALES */
+            html,
+            body {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+
+            /* BARRA DE NAVEGACIÓN: Centrado vertical estricto */
+            .navbar {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 0 15px !important;
+                height: 80px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                margin: 0 !important;
+
+                /* Convertimos la barra en fija y la pegamos al techo del móvil */
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                z-index: 10000 !important;
+                /* Capa altísima para que nada pase por encima al hacer scroll */
+                background: var(--bg-navbar, #10141f) !important;
+                /* Fondo sólido para que no se transparente el texto de abajo */
+            }
+
+            /* Ajuste de contenedor del logo */
+            .nav-logo {
+                margin: 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                height: 100% !important;
+            }
+
+            /* Enlace interno del logo: Anular márgenes invisibles */
+            .nav-logo a {
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                /* Separación adaptada al nuevo tamaño */
+                margin: 0 !important;
+                padding: 0 !important;
+                text-decoration: none !important;
+            }
+
+            /* Icono del logo MÁS GRANDE y centrado */
+            .nav-logo img {
+                max-height: 75px !important;
+                width: auto !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Texto del logo ajustado al lado del icono */
+            .logo-text {
+                display: block !important;
+                font-size: 1.1rem !important;
+                color: #ffffff !important;
+                white-space: nowrap !important;
+                font-weight: bold !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: 1 !important;
+                text-align: left;
+                /* Elimina el salto invisible que lo empujaba hacia abajo */
+            }
+
+            /* MENÚ HAMBURGUESA */
+            .menu-toggle {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                width: 30px !important;
+                height: 22px !important;
+                background: transparent !important;
+                background-color: transparent !important;
+                /* Forzar fondo transparente */
+                border: none !important;
+                cursor: pointer !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                z-index: 1001 !important;
+
+                /* Elimina el recuadro gris feo que mete iOS al pulsar botones */
+                -webkit-tap-highlight-color: transparent !important;
+                appearance: none !important;
+                -webkit-appearance: none !important;
+            }
+
+            /* Estilo ultra-reforzado para las 3 rayas */
+            .menu-toggle span {
+                display: block !important;
+                width: 100% !important;
+                height: 3px !important;
+
+                /* Forzamos el color blanco con doble propiedad para evitar degradados del sistema */
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+                margin: 0 !important;
+
+                /* Parche anti-modos inteligentes de省energía o temas de móvil */
+                opacity: 1 !important;
+                filter: none !important;
+                mix-blend-mode: normal !important;
+            }
+
+            /* Menú desplegable móvil */
+            .nav-links {
+                display: none;
+                width: 100%;
+                min-height: calc(100vh - 80px);
+                flex-direction: column;
+                background: var(--bg-navbar, #10141f);
+                position: absolute;
+                top: 80px;
+                left: 0;
+                padding: 40px 20px;
+                text-align: center;
+                gap: 20px;
+                box-sizing: border-box;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            /* SECCIONES EN ZIG-ZAG (Pasos): Texto ARRIBA, Imagen DEBAJO */
+            .step-block,
+            .step-block:nth-of-type(even) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 30px;
+                margin-bottom: 70px;
+                padding: 0;
+            }
+
+            .step-block>*:not(.step-image) {
+                order: 1 !important;
+            }
+
+            .step-image {
+                order: 2 !important;
+                max-width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+
+            .step-image img {
+                max-height: 240px !important;
+                width: auto !important;
+                max-width: 100% !important;
+                object-fit: contain !important;
+            }
+
+            /* ACORDEÓN EN ZIG-ZAG (Servicios): Texto ARRIBA, Imagen DEBAJO */
+            .accordion-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 30px !important;
+            }
+
+            .accordion-item {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .accordion-text {
+                order: 1 !important;
+            }
+
+            .accordion-image {
+                order: 2 !important;
+                margin-top: 15px !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+
+            .accordion-item:nth-child(1) .accordion-image img,
+            .accordion-item:nth-child(2) .accordion-image img {
+                height: auto !important;
+                max-height: 300px !important;
+                max-width: 100% !important;
+                object-fit: contain !important;
+            }
+
+            /* AJUSTES ESTRUCTURALES GLOBALES MÓVIL */
+            section {
+                padding: 50px 5% !important;
+                box-sizing: border-box !important;
+            }
+
+            .hero-section {
+                padding-top: 140px !important;
+                /* 80px del menú + 60px de aire */
+                min-height: calc(100vh - 80px) !important;
+            }
+
+            .hero-content {
+                padding: 15px !important;
+            }
+
+            h2 {
+                font-size: 1.8rem !important;
+            }
+
+            /* Conversión de rejillas a 1 sola columna limpia */
+            .grid-container,
+            .features-grid,
+            .contact-container {
+                grid-template-columns: 1fr !important;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 400px !important;
+                margin: 0 auto !important;
+            }
+
+            .carousel-slide {
+                flex: 0 0 280px !important;
+            }
+
+            .content-block {
+                padding: 25px !important;
+            }
+
+            .btn-buy {
+                width: 100% !important;
+            }
+        }
+
+        /* ==========================================================================
+   ESTILOS DEL FOOTER
+   ========================================================================== */
+        .main-footer {
+            background-color: var(--bg-navbar, #10141f);
+            color: #ffffff;
+            padding: 60px 5% 20px 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-box h4 {
+            color: #ff6600;
+            /* Color naranja acentuado como tus títulos */
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .footer-about p {
+            color: #a0a5b5;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-top: 15px;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .footer-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-box ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-box ul li a {
+            color: #a0a5b5;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-box ul li a:hover {
+            color: #ff6600;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* RESPONSIVE PARA EL FOOTER */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        /* ==========================================================================
+   ESTILOS DEL POP-UP DE COOKIES
+   ========================================================================== */
+        .cookie-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: #171d2c;
+            /* Tono oscuro integrado con tu web */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            z-index: 99999;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        /* Clase auxiliar para ocultarlo dinámicamente */
+        .cookie-popup.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, 30px);
+        }
+
+        .cookie-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cookie-text p {
+            margin: 0 0 8px 0;
+            color: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-family: sans-serif;
+        }
+
+        .cookie-text p strong {
+            font-size: 1.1rem;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn-cookie {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease, transform 0.1s ease;
+            border: none;
+        }
+
+        .btn-cookie:active {
+            transform: scale(0.98);
+        }
+
+        .btn-cookie.reject {
+            background-color: transparent;
+            color: #a0a5b5;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-cookie.reject:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+
+        .btn-cookie.accept {
+            background: #ff6600;
+            /* Match con tu diseño premium */
+            color: #ffffff;
+        }
+
+        .btn-cookie.accept:hover {
+            background: #e05500;
+        }
+
+        /* RESPONSIVE PARA COOKIES */
+        @media (max-width: 480px) {
+            .cookie-popup {
+                bottom: 10px;
+                width: 95%;
+                padding: 15px;
+            }
+
+            .cookie-buttons {
+                flex-direction: column-reverse;
+                /* El botón principal queda arriba en móviles para mejor accesibilidad */
+            }
+
+            .btn-cookie {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ==========================================================================
+   AJUSTE DE SCROLL FLUIDO Y MÁRGENES DE SECCIÓN (MENÚ FIJO MÓVIL)
+   ========================================================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* En ordenador se queda como te gustaba */
+        section {
+            scroll-margin-top: 35px;
+        }
+
+        #inicio,
+        .hero-section {
+            scroll-margin-top: 0px !important;
+        }
+
+        /* En móvil, como el menú ahora flota arriba, recalculamos los espacios */
+        @media (max-width: 860px) {
+            section {
+                scroll-margin-top: 115px !important;
+                /* 80px de la barra fija + 35px de colchón */
+            }
+
+            #inicio,
+            .hero-section {
+                scroll-margin-top: 0px !important;
+                /* Al ser fija la barra, el inicio va al 0 real */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="#inicio" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="imagenes/logo.webp" alt="TheBestIPTVSpain Logo">
+                <span class="logo-text">The Best IPTV Spain</span>
+            </a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#por-que-elegirnos">Servicio</a></li>
+            <li><a href="#contenidos">Catálogo</a></li>
+            <li><a href="#como-empezar">Guía</a></li>
+            <li><a href="#tarifas">Planes</a></li>
+            <li><a href="#experiencias">Reseñas</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li id="contact-box"><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio" class="hero-section">
+        <h1>La Experiencia IPTV Definitiva en España</h1>
+        <h2>Bienvenido a una Nueva Forma de Disfrutar del Entretenimiento Digital</h2>
+        <div class="hero-content">
+            <p><b>The Best IPTV Spain</b> es la alternativa definitiva para
+                quienes desean disfrutar de una amplia variedad de canales, eventos deportivos y contenido audiovisual
+                con una <b>única suscripción</b>.</p>
+            <p>Disfruta de más de <b>30.000 canales de TV en vivo</b> con acceso a eventos deportivos y una amplia
+                biblioteca
+                multimedia con más de <b>20.000 títulos en español</b>.</p>
+        </div>
+    </header>
+
+    <section id="por-que-elegirnos" class="features-section">
+        <h2>¿Por Qué Elegirnos?</h2>
+
+        <div class="grid-container features-grid">
+
+            <article class="card feature-card">
+                <img src="imagenes/soporte-tecnico.png" alt="Icono Soporte Técnico" class="feature-icon" loading="lazy">
+                <h3>Soporte Técnico 24/7</h3>
+                <p>Contarás con un chat disponible para resolver dudas y ayudarte a solucionar cualquier tipo de
+                    inconveniente.</p>
+            </article>
+
+            <article class="card feature-card">
+                <img src="imagenes/calidad1.png" alt="Icono Alta Calidad" class="feature-icon" loading="lazy">
+                <h3>Alta Calidad</h3>
+                <p>Disfruta de imágenes más definidas, colores más vivos y una experiencia visual más inmersiva.</p>
+                <p>Además de una reproducción rápida, estable y sin cortes, incluso en alta resolución.</p>
+            </article>
+
+            <article class="card feature-card">
+                <img src="imagenes/actualizacion2.png" alt="Icono Actualizaciones" class="feature-icon" loading="lazy">
+                <h3>Actualizaciones Constantes</h3>
+                <p>Nuestra biblioteca multimedia se mantiene en continua actualización con el objetivo de ofrecer acceso
+                    a novedades recientes.</p>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="contenidos" class="content-universe-section">
+        <h2>El Servicio Más Completo</h2>
+        <p class="section-subtitle">Accede a diferentes categorías sin necesidad de contratar múltiples servicios o
+            cambiar constantemente de aplicación.</p>
+
+        <div class="accordion-container">
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="header-title">⚽ Deportes En Vivo</span>
+                    <span class="accordion-arrow"></span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="accordion-grid">
+                            <div class="accordion-text">
+                                <p class="main-desc">La plataforma ofrece acceso a un amplio catálogo de retransmisión,
+                                    incluyendo competiciones nacionales e internacionales.</p>
+                                <div class="content-columns">
+                                    <div class="content-col">
+                                        <h4>Fútbol y Baloncesto</h4>
+                                        <ul>
+                                            <li>LaLiga</li>
+                                            <li>Premier League</li>
+                                            <li>NBA</li>
+                                            <li>EuroLeague</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-col">
+                                        <h4>Motor y Velocidad</h4>
+                                        <ul>
+                                            <li>Fórmula 1</li>
+                                            <li>MotoGP</li>
+                                            <li>Mundiales de Motociclismo</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-col">
+                                        <h4>Combate y Especiales</h4>
+                                        <p>Acceso directo a las mejores veladas de MMA, Boxeo internacional y eventos
+                                            especiales PPV.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-image">
+                                <img src="imagenes/deportes.avif" alt="Deportes en directo" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="header-title">🎬 Videoteca a la Carta (VOD)</span>
+                    <span class="accordion-arrow"></span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="accordion-grid">
+                            <div class="accordion-text">
+                                <p class="main-desc">La modalidad Video On Demand (VOD) te permite disfrutar de miles de
+                                    títulos cuando tú quieras, sin horarios y con calidad cristalina.</p>
+                                <div class="content-columns">
+                                    <div class="content-col">
+                                        <h4>Películas para Todos</h4>
+                                        <p>Un catálogo gigantesco (+125K títulos) que incluye géneros como:</p>
+                                        <ul class="two-columns-list">
+                                            <li>Acción</li>
+                                            <li>Ciencia Ficción</li>
+                                            <li>Comedia</li>
+                                            <li>Drama</li>
+                                            <li>Terror</li>
+                                            <li>Animación</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-col">
+                                        <h4>Series Completas</h4>
+                                        <p>Disfruta de temporadas completas de las plataformas más conocidas para verlas
+                                            a tu propio ritmo, de principio a fin y sin esperas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-image">
+                                <img src="imagenes/serie.jpg" alt="Cine y Series" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="header-title">🌍 Canales Internacionales</span>
+                    <span class="accordion-arrow"></span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="accordion-grid">
+                            <div class="accordion-text">
+                                <p class="main-desc">Accede a contenidos de diferentes países y disfruta de una
+                                    experiencia de televisión verdaderamente sin fronteras.</p>
+                                <div class="content-columns">
+                                    <div class="content-col">
+                                        <h4>Programación Española</h4>
+                                        <p>Canales nacionales y autonómicos en directo con temáticas de:</p>
+                                        <ul>
+                                            <li>Información y Cultura</li>
+                                            <li>Entretenimiento y Música</li>
+                                            <li>Documentales Premium</li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-col">
+                                        <h4>Televisión Global</h4>
+                                        <p>Emisiones en vivo procedentes de más de 50 países, incluyendo:</p>
+                                        <ul class="two-columns-list">
+                                            <li>Estados Unidos</li>
+                                            <li>Países Bajos</li>
+                                            <li>Francia</li>
+                                            <li>Alemania</li>
+                                            <li>Italia</li>
+                                            <li>Latinoamérica</li>
+                                            <li>Portugal</li>
+                                            <li>Asia</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-image">
+                                <img src="imagenes/rtve1.png" alt="Canales del mundo" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="como-empezar" class="steps-section">
+        <h2>Cómo Empezar: Guía Paso a Paso</h2>
+
+        <!-- PASO 1: Imagen Izquierda, Texto Derecha -->
+        <div class="step-block">
+            <div class="step-image">
+                <img src="imagenes/smarters-pro.png" alt="Elige tu Dispositivo" loading="lazy">
+            </div>
+            <div class="step-text">
+                <h3>1. Elige tu Dispositivo</h3>
+                <p>Nuestra amplia compatibilidad facilita el acceso al contenido desde prácticamente cualquier
+                    dispositivo.</p>
+                <p>Entre los habitualmente utilizados se encuentran:</p>
+                <ul>
+                    <li>Smart TV</li>
+                    <li>Android TV</li>
+                    <li>Fire TV Stick</li>
+                    <li>Smartphones Android</li>
+                    <li>iPhone y iPad</li>
+                    <li>Ordenadores Windows</li>
+                    <li>Ordenadores Mac</li>
+                    <li>Tablets</li>
+                </ul>
+                <p>Recomendamos utilizar la aplicación <b>IPTV Smarters Pro</b> o <b>IPTV Smarters Lite</b> por su
+                    facilidad de uso y compatibilidad. Sin embargo, el servicio es compatible con otras aplicaciones
+                    gratuitas y de pago, permitiendo a cada usuario elegir la opción que mejor se adapte a sus
+                    necesidades.</p>
+            </div>
+        </div>
+
+        <!-- PASO 2: Texto Izquierda, Imagen Derecha (El CSS lo invierte automáticamente) -->
+        <div class="step-block">
+            <div class="step-image">
+                <img src="imagenes/smarters-2.png" alt="Solicita tu Acceso" loading="lazy">
+            </div>
+            <div class="step-text">
+                <h3>2. Solicita tu Acceso</h3>
+                <p>Una vez seleccionado el dispositivo, el siguiente paso consiste en solicitar las credenciales de
+                    acceso correspondientes.</p>
+                <p>Para ello envía un mensaje de Telegram o un correo con el plan solicitado.</p>
+                <p>Este proceso permite realizar la configuración inicial y comprobar la compatibilidad con el equipo
+                    que se va a utilizar.</p>
+            </div>
+        </div>
+
+        <!-- PASO 3: Imagen Izquierda, Texto Derecha -->
+        <div class="step-block">
+            <div class="step-image">
+                <img src="imagenes/disfruta.png" alt="Disfruta del Contenido" loading="lazy">
+            </div>
+            <div class="step-text">
+                <h3>3. Disfruta de Todo el Contenido</h3>
+                <p>Tras introducir las credenciales correspondientes mediante formato M3U o Xtream Codes, el usuario
+                    puede comenzar a navegar por el catálogo disponible y disfrutar de una experiencia completa de
+                    entretenimiento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tarifas" class="pricing-section">
+        <h2>Tarifas Competitivas</h2>
+        <p>La flexibilidad es uno de los factores más valorados por los usuarios actuales. Por ello, existen diferentes
+            opciones de contratación adaptadas a distintos niveles de uso.</p>
+
+        <div class="pricing-tabs-info">
+            <span class="tab-info">Un Dispositivo</span>
+        </div>
+
+        <div class="pricing-grid">
+            <article class="pricing-card">
+                <h3>PAQUETE BÁSICO</h3>
+                <div class="duration">1 mes</div>
+                <div class="price">10,00 €</div>
+                <ul>
+                    <li>+30,000 TV Canales</li>
+                    <li>+125,000 Películas y Series</li>
+                    <li>Todos los dispositivos compatibles</li>
+                    <li>PPV Canales</li>
+                    <li>Anti-freeze tecnología</li>
+                    <li>Pago único sin contrato</li>
+                    <li>Asistencia técnica 24/7</li>
+                </ul>
+                <a href="https://t.me/TheBestIPTVSpain?text=Hola,%20me%20interesa%20el%20PAQUETE%20BÁSICO%20de%201%20mes."
+                    target="_blank" class="btn-buy">COMPRAR AHORA</a>
+            </article>
+
+            <article class="pricing-card">
+                <h3>PAQUETE PLUS</h3>
+                <div class="duration">3 meses</div>
+                <div class="price">25,00 €</div>
+                <ul>
+                    <li>+30,000 TV Canales</li>
+                    <li>+125,000 Películas y Series</li>
+                    <li>Todos los dispositivos compatibles</li>
+                    <li>PPV Canales</li>
+                    <li>Anti-freeze tecnología</li>
+                    <li>Pago único sin contrato</li>
+                    <li>Asistencia técnica 24/7</li>
+                </ul>
+                <a href="https://t.me/TheBestIPTVSpain?text=Hola,%20me%20interesa%20el%20PAQUETE%20PLUS%20de%203%20meses."
+                    target="_blank" class="btn-buy">COMPRAR AHORA</a>
+            </article>
+
+            <article class="pricing-card">
+                <h3>PAQUETE PRO</h3>
+                <div class="duration">6 meses</div>
+                <div class="price">35,00 €</div>
+                <ul>
+                    <li>+30,000 TV Canales</li>
+                    <li>+125,000 Películas y Series</li>
+                    <li>Todos los dispositivos compatibles</li>
+                    <li>PPV Canales</li>
+                    <li>Anti-freeze tecnología</li>
+                    <li>Pago único sin contrato</li>
+                    <li>Asistencia técnica 24/7</li>
+                </ul>
+                <a href="https://t.me/TheBestIPTVSpain?text=Hola,%20me%20interesa%20el%20PAQUETE%20PRO%20de%206%20meses."
+                    target="_blank" class="btn-buy">COMPRAR AHORA</a>
+            </article>
+
+            <article class="pricing-card">
+                <h3>PAQUETE VIP</h3>
+                <div class="duration">*12 meses</div>
+                <div class="price">50,00 €</div>
+                <ul>
+                    <li>+30,000 TV Canales</li>
+                    <li>+125,000 Películas y Series</li>
+                    <li>Todos los dispositivos compatibles</li>
+                    <li>PPV Canales</li>
+                    <li>Anti-freeze tecnología</li>
+                    <li>Pago único sin contrato</li>
+                    <li>Asistencia técnica 24/7</li>
+                    <li>🎁 <strong>Regalo:</strong> 1 mes extra (13 meses totales)</li>
+                </ul>
+                <a href="https://t.me/TheBestIPTVSpain?text=Hola,%20me%20interesa%20el%20PAQUETE%20VIP%20de%2012%20meses."
+                    target="_blank" class="btn-buy">COMPRAR AHORA</a>
+            </article>
+        </div>
+    </section>
+
+    <section id="experiencias" class="testimonials-section">
+        <h2>Experiencias de Nuestros Clientes</h2>
+        <p>La satisfacción de los usuarios constituye uno de los indicadores más importantes para cualquier servicio
+            digital.</p>
+        <p>Los clientes valoran especialmente aspectos como:</p>
+        <ul>
+            <li>La estabilidad de la reproducción.</li>
+            <li>La amplitud del catálogo disponible.</li>
+            <li>La facilidad de configuración.</li>
+            <li>La calidad de imagen.</li>
+            <li>La rapidez del soporte técnico.</li>
+            <li>La variedad de canales internacionales.</li>
+        </ul>
+        <p>Las opiniones y experiencias compartidas por los usuarios permiten conocer de primera mano cómo la plataforma
+            se adapta a diferentes perfiles de consumo y necesidades de entretenimiento.</p>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2>Preguntas Frecuentes</h2>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿Qué dispositivos son compatibles?</h4>
+            </summary>
+            <div class="faq-content">
+                <p>El servicio puede utilizarse en Smart TV, Android TV, Fire TV Stick, teléfonos móviles, tablets,
+                    ordenadores y otros dispositivos compatibles con aplicaciones IPTV.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿Necesito conocimientos técnicos?</h4>
+            </summary>
+            <div class="faq-content">
+                <p>No. Las aplicaciones recomendadas cuentan con procesos de configuración sencillos y el soporte
+                    técnico puede ayudarte durante la instalación.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿Puedo utilizar varias aplicaciones?</h4>
+            </summary>
+            <div class="faq-content">
+                <p>Sí. Dependiendo del dispositivo utilizado, es posible acceder mediante diferentes reproductores
+                    compatibles con listas M3U y sistemas Xtream Codes.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿La calidad de imagen depende de mi conexión?</h4>
+            </summary>
+            <div class="faq-content">
+                <p>Sí. Una conexión estable y con suficiente velocidad contribuirá a obtener una mejor experiencia de
+                    reproducción.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿Se actualiza el catálogo regularmente?</h4>
+            </summary>
+            <div class="faq-content">
+                <p>Sí. La biblioteca de contenidos y los canales disponibles se mantienen actualizados para ofrecer una
+                    experiencia más completa y adaptada a las preferencias de los usuarios.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿Existe asistencia técnica?</h4>
+            </summary>
+            <div class="faq-item">
+                <summary>
+                    <h4>¿Existe asistencia técnica?</h4>
+                </summary>
+                <div class="faq-content">
+                    <p>Sí. El equipo de soporte está disponible para resolver dudas relacionadas con la instalación,
+                        configuración y uso del servicio.</p>
+                </div>
+        </details>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <h4>¿Puedo acceder desde diferentes ubicaciones?</h4>
+            </summary>
+            <div class="faq-content">
+                <p>Siempre que dispongas de una conexión a Internet compatible y de un dispositivo configurado
+                    correctamente, podrás acceder a tus contenidos desde múltiples ubicaciones.</p>
+            </div>
+        </details>
+    </section>
+
+
+    </section>
+
+    <a href="https://t.me/TheBestIPTVSpain" target="_blank" class="telegram-float">
+        <img src="imagenes/Telegram_Logo.png" alt="Telegram">
+    </a>
+    <section id="contacto" class="contact-section">
+        <h2>Contacto</h2>
+        <div class="contact-container">
+
+            <form id="miFormulario" class="contact-form">
+                <input type="hidden" name="access_key" value="e6b40c4f-df4d-41a4-8eda-4c74b915748e">
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="Email" placeholder="tu@email.com" required>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="Mensaje" placeholder="¿En qué podemos ayudarte?" rows="5"
+                    required></textarea>
+
+                <input type="hidden" name="subject" value="Nuevo mensaje de Web IPTV">
+
+                <button type="submit" class="btn-buy">Enviar mensaje</button>
+            </form>
+            <div id="toast" class="toast-success">
+                <i class="fas fa-check-circle"></i> ¡Mensaje enviado correctamente!
+            </div>
+            <div class="contact-telegram-box">
+                <h3>Atención personalizada</h3>
+                <p>¿Tienes dudas o necesitas ayuda con tu configuración? Escríbenos directamente por Telegram. Nuestro
+                    equipo estará encantado de atenderte personalmente.</p>
+
+                <a href="https://t.me/TheBestIPTVSpain" target="_blank" class="rect-telegram-btn">
+                    <i class="fab fa-telegram"></i>
+                    <span>Hablar con soporte</span>
+                </a>
+
+                <div class="telegram-info" style="margin-top: 15px; font-size: 0.8rem; color: var(--text-gray);">
+                    <p>Respondemos a todos los mensajes por orden de llegada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-box footer-about">
+                <span class="footer-logo">The Best IPTV Spain</span>
+                <p>La alternativa definitiva para disfrutar del mejor entretenimiento digital sin cortes y con la máxima
+                    estabilidad en España.</p>
+            </div>
+
+            <div class="footer-box">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#por-que-elegirnos">Servicio</a></li>
+                    <li><a href="#tarifas">Planes</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#aviso-legal">Aviso Legal</a></li>
+                    <li><a href="#privacidad">Política de Privacidad</a></li>
+                    <li><a href="#cookies">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Best IPTV Spain. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="cookie-popup" class="cookie-popup hidden">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p><strong>Aviso de Cookies 🍪</strong></p>
+                <p>Utilizamos cookies propias y de terceros para analizar nuestros servicios y mostrarte contenido
+                    relacionado con tus preferencias. Puedes aceptar todas las cookies o configurar tu elección.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="btn-reject-cookies" class="btn-cookie reject">Rechazar</button>
+                <button id="btn-accept-cookies" class="btn-cookie accept">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const contactSection = document.getElementById('contacto');
+            const telegramFloat = document.querySelector('.telegram-float');
+
+            if (!contactSection || !telegramFloat) return;
+
+            // Obtenemos la posición de la sección de contacto
+            const rect = contactSection.getBoundingClientRect();
+
+            // Si la parte superior de la sección entra en el campo de visión (ej. menos de 500px desde arriba)
+            if (rect.top < 500) {
+                telegramFloat.style.opacity = '0';
+                telegramFloat.style.visibility = 'hidden';
+                telegramFloat.style.transition = 'all 0.3s ease';
+            } else {
+                telegramFloat.style.opacity = '1';
+                telegramFloat.style.visibility = 'visible';
+            }
+        });
+
+        /*----BORRAR FORM ENVIADO----*/
+        const form = document.getElementById('miFormulario');
+        const toast = document.getElementById("toast");
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Evita que la página se recargue
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+
+            // 1. Asunto personalizado y dinámico con el nombre del cliente
+            const nombreCliente = object.Nombre || "Usuario Anónimo"; // Por si olvidan poner nombre
+            object.subject = "Nuevo mensaje de " + nombreCliente;
+
+            // 2. FORZAR REMITENTE: Esto agrupará todos los correos bajo el nombre "Web IPTV"
+            object.from_name = "Web IPTV";
+
+            const json = JSON.stringify(object);
+
+            // Enviamos los datos a Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        // ÉXITO: Limpiamos formulario
+                        form.reset();
+
+                        // Activamos el popup verde
+                        toast.className = "toast-success show";
+
+                        // Lo ocultamos a los 3 segundos automáticamente
+                        setTimeout(function () {
+                            toast.className = toast.className.replace("show", "");
+                        }, 3000);
+                    } else {
+                        alert('Hubo un error: ' + json.message);
+                    }
+                })
+                .catch(error => {
+                    alert('Error al conectar con el servidor.');
+                });
+        });
+
+        /*-------Toggle menu------*/
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Cerrar menú al hacer click en links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        /*------CATALOGO-----*/
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionItem = button.parentElement;
+
+                // Alternar el estado abierto/cerrado
+                accordionItem.classList.toggle('is-open');
+
+                // Opcional: Cerrar los demás al abrir uno nuevo
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    if (item !== accordionItem) {
+                        item.classList.remove('is-open');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const cookiePopup = document.getElementById("cookie-popup");
+            const btnAccept = document.getElementById("btn-accept-cookies");
+            const btnReject = document.getElementById("btn-reject-cookies");
+
+            // Comprobar si el usuario ya tomó una decisión en el pasado
+            const cookieChoice = localStorage.getItem("cookiesPreference");
+
+            if (!cookieChoice) {
+                // Si no hay registro, mostramos el cartel quitando la clase 'hidden'
+                cookiePopup.classList.remove("hidden");
+            }
+
+            // Acción al pulsar "Aceptar"
+            btnAccept.addEventListener("click", function () {
+                localStorage.setItem("cookiesPreference", "accepted");
+                cookiePopup.classList.add("hidden");
+            });
+
+            // Acción al pulsar "Rechazar"
+            btnReject.addEventListener("click", function () {
+                localStorage.setItem("cookiesPreference", "rejected");
+                cookiePopup.classList.add("hidden");
+            });
+        });
+    </script>
+</body>
+
+</html>
