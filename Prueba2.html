@@ -3,12 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Experiencia IPTV Definitiva en España</title>
-    <link rel="preload" as="image" href="imagenes/logo.webp" type="image/webp">
-    <link rel="preload" as="image" href="imagenes/Salon.webp" type="image/webp">
-    <link rel="preload" as="image" href="imagenes/Telegram_Logo.png" type="image/webp">
-    <link rel="preconnect" href="https://api.web3forms.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Experiencia IPTV Definitiva en España</title>
+<meta name="description" content="El mejor IPTV en España. Canales en HD y 4K, películas y series con estabilidad garantizada sin cortes. Soporte 24/7 compatible con todos los dispositivos.">
+<link rel="icon" type="image/webp" href="imagenes/logo-pes.webp">
+<link rel="apple-touch-icon" href="imagenes/logo.webp">
+<link rel="canonical" href="https://thebestiptvspain.com/">
+<link rel="preload" as="image" href="imagenes/logo.webp" type="image/webp">
+<link rel="preload" as="image" href="imagenes/Salon.webp" type="image/webp">
+<link rel="preload" as="image" href="imagenes/Telegram_Logo.png" type="image/webp">
+<link rel="preconnect" href="https://api.web3forms.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thebestiptvspain.com/">
+<meta property="og:title" content="La Experiencia IPTV Definitiva en España">
+<meta property="og:description" content="Disfruta de la mejor televisión por internet con miles de canales en alta definición, estabilidad premium sin interrupciones y asistencia técnica las 24 horas.">
+<meta property="og:image" content="https://thebestiptvspain.com/imagenes/Salon.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La Experiencia IPTV Definitiva en España">
+<meta name="twitter:description" content="Disfruta de la mejor televisión por internet con miles de canales en alta definición, estabilidad premium sin interrupciones y asistencia técnica las 24 horas.">
+<meta name="twitter:image" content="https://thebestiptvspain.com/imagenes/Salon.webp">
+<meta name="theme-color" content="#000000">
     <style>
         /* ESTILOS GLOBALES Y VARIABLES */
         :root {
@@ -106,7 +120,7 @@
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
-            padding: 10px 20px;
+            padding: 10px 12px;
             border-radius: 4px;
             transition: var(--transition);
         }
@@ -1321,6 +1335,16 @@
                 width: 100% !important;
             }
         }
+        /* Adaptación del botón de prueba para pantallas móviles */
+            .btn-hero-trial {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 14px 20px !important;
+                font-size: 1rem !important;
+            }
+            .cta-badge {
+                font-size: 0.85rem !important;
+            }
 
         /* ==========================================================================
    ESTILOS DEL FOOTER
@@ -1715,6 +1739,58 @@
                 right: 5px;
             }
         }
+
+        #trial-box a {
+            background-color: #0088cc !important;
+            color: #ffffff !important;
+            border: 1px solid #0088cc;
+        }
+
+        #trial-box a:hover {
+            background-color: #0077b5 !important;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+        }
+
+        /* ==========================================
+           BOTÓN DE PRUEBA GRATUITA EN EL HERO
+           ========================================== */
+        .hero-cta-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cta-badge {
+            font-size: 0.95rem !important;
+            color: #ff6600 !important; /* Tu naranja corporativo */
+            font-weight: 700;
+            margin-bottom: 0px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-hero-trial {
+            background: linear-gradient(90deg, #ff6600, #ff8533);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px; /* Diseño redondeado premium */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 102, 0, 0.4);
+            display: inline-block;
+        }
+
+        .btn-hero-trial:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 102, 0, 0.6);
+            background: linear-gradient(90deg, #e65c00, #ff6600);
+        }
     </style>
 </head>
 
@@ -1739,6 +1815,7 @@
             <li><a href="#tarifas">Planes</a></li>
             <li><a href="#experiencias">Experiencias</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li id="trial-box"><a href="https://t.me/TheBestIPTVSpain?text=Hola!%20%F0%9F%91%8B%20Vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20solicitar%20la%20prueba%20gratuita%20de%20IPTV%20para%20comprobar%20la%20estabilidad%20del%20servicio." target="_blank">Prueba Gratis</a></li>
             <li id="contact-box"><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
@@ -1753,6 +1830,11 @@
             <p>Disfruta de más de <b>30.000 canales de TV en vivo</b> con acceso a eventos deportivos y una amplia
                 biblioteca
                 multimedia con más de <b>20.000 títulos en español</b>.</p>
+            
+            <div class="hero-cta-container">
+                <p class="cta-badge">⚡ Ofrecemos una prueba de 24h sin compromiso</p>
+                <a href="https://t.me/TheBestIPTVSpain?text=Hola!%20%F0%9F%91%8B%20Vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20solicitar%20la%20prueba%20gratuita%20de%2024h%20para%20probar%20el%20servicio." target="_blank" class="btn-hero-trial">Solicitar Prueba Gratis</a>
+            </div>
         </div>
     </header>
 
@@ -2046,7 +2128,7 @@
 
             <article class="pricing-card">
                 <h3>PAQUETE VIP</h3>
-                <div class="duration">*12 meses</div>
+                <div class="duration">12 meses</div>
                 <div class="price">50,00 €</div>
                 <ul>
                     <li>+30,000 TV Canales</li>
